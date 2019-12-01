@@ -102,7 +102,8 @@ public class XAxisRendererHorizontalBarChart extends XAxisRenderer {
             pointF.y = 0.5f;
             drawLabels(c, mViewPortHandler.contentRight() + xoffset, pointF);
 
-        } else if (mXAxis.getPosition() == XAxisPosition.TOP_INSIDE) {
+        } else if (mXAxis.getPosition() == XAxisPosition.TOP_INSIDE
+                || mXAxis.getPosition() == XAxisPosition.TOP_INSIDE_REVERSE_ALIGN) {
             pointF.x = 1.0f;
             pointF.y = 0.5f;
             drawLabels(c, mViewPortHandler.contentRight() - xoffset, pointF);
@@ -112,8 +113,10 @@ public class XAxisRendererHorizontalBarChart extends XAxisRenderer {
             pointF.y = 0.5f;
             drawLabels(c, mViewPortHandler.contentLeft() - xoffset, pointF);
 
-        } else if (mXAxis.getPosition() == XAxisPosition.BOTTOM_INSIDE) {
-            pointF.x = 1.0f;
+        } else if (mXAxis.getPosition() == XAxisPosition.BOTTOM_INSIDE ||
+                mXAxis.getPosition() == XAxisPosition.BOTTOM_INSIDE_REVERSE_ALIGN) {
+//            pointF.x = 1.0f;
+            pointF.x = 0.0f;
             pointF.y = 0.5f;
             drawLabels(c, mViewPortHandler.contentLeft() + xoffset, pointF);
 
@@ -191,6 +194,7 @@ public class XAxisRendererHorizontalBarChart extends XAxisRenderer {
 
         if (mXAxis.getPosition() == XAxisPosition.TOP
                 || mXAxis.getPosition() == XAxisPosition.TOP_INSIDE
+                || mXAxis.getPosition() == XAxisPosition.TOP_INSIDE_REVERSE_ALIGN
                 || mXAxis.getPosition() == XAxisPosition.BOTH_SIDED) {
             c.drawLine(mViewPortHandler.contentRight(),
                     mViewPortHandler.contentTop(), mViewPortHandler.contentRight(),
@@ -199,6 +203,7 @@ public class XAxisRendererHorizontalBarChart extends XAxisRenderer {
 
         if (mXAxis.getPosition() == XAxisPosition.BOTTOM
                 || mXAxis.getPosition() == XAxisPosition.BOTTOM_INSIDE
+                || mXAxis.getPosition() == XAxisPosition.BOTTOM_INSIDE_REVERSE_ALIGN
                 || mXAxis.getPosition() == XAxisPosition.BOTH_SIDED) {
             c.drawLine(mViewPortHandler.contentLeft(),
                     mViewPortHandler.contentTop(), mViewPortHandler.contentLeft(),

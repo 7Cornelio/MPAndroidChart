@@ -123,6 +123,10 @@ public class XAxisRenderer extends AxisRenderer {
             pointF.y = 1.0f;
             drawLabels(c, mViewPortHandler.contentTop() + yoffset + mXAxis.mLabelRotatedHeight, pointF);
 
+        } else if (mXAxis.getPosition() == XAxisPosition.TOP_INSIDE_REVERSE_ALIGN) {
+            pointF.x = 0.5f;
+            pointF.y = 1.0f;
+            drawLabels(c, mViewPortHandler.contentTop() + yoffset + mXAxis.mLabelRotatedHeight, pointF);
         } else if (mXAxis.getPosition() == XAxisPosition.BOTTOM) {
             pointF.x = 0.5f;
             pointF.y = 0.0f;
@@ -132,7 +136,10 @@ public class XAxisRenderer extends AxisRenderer {
             pointF.x = 0.5f;
             pointF.y = 0.0f;
             drawLabels(c, mViewPortHandler.contentBottom() - yoffset - mXAxis.mLabelRotatedHeight, pointF);
-
+        } else if (mXAxis.getPosition() == XAxisPosition.BOTTOM_INSIDE_REVERSE_ALIGN) {
+            pointF.x = 0.5f;
+            pointF.y = 1.0f;
+            drawLabels(c, mViewPortHandler.contentBottom() - yoffset, pointF);
         } else { // BOTH SIDED
             pointF.x = 0.5f;
             pointF.y = 1.0f;
@@ -156,6 +163,7 @@ public class XAxisRenderer extends AxisRenderer {
 
         if (mXAxis.getPosition() == XAxisPosition.TOP
                 || mXAxis.getPosition() == XAxisPosition.TOP_INSIDE
+                || mXAxis.getPosition() == XAxisPosition.TOP_INSIDE_REVERSE_ALIGN
                 || mXAxis.getPosition() == XAxisPosition.BOTH_SIDED) {
             c.drawLine(mViewPortHandler.contentLeft(),
                     mViewPortHandler.contentTop(), mViewPortHandler.contentRight(),
@@ -164,6 +172,7 @@ public class XAxisRenderer extends AxisRenderer {
 
         if (mXAxis.getPosition() == XAxisPosition.BOTTOM
                 || mXAxis.getPosition() == XAxisPosition.BOTTOM_INSIDE
+                || mXAxis.getPosition() == XAxisPosition.BOTTOM_INSIDE_REVERSE_ALIGN
                 || mXAxis.getPosition() == XAxisPosition.BOTH_SIDED) {
             c.drawLine(mViewPortHandler.contentLeft(),
                     mViewPortHandler.contentBottom(), mViewPortHandler.contentRight(),
