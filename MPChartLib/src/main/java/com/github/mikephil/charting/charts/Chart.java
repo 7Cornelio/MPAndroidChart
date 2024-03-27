@@ -1492,6 +1492,22 @@ public abstract class Chart<T extends ChartData<? extends IDataSet<? extends Ent
 
         return true;
     }
+    public boolean saveToFileOutputStreamh(FileOutputStream stream) {
+        Bitmap b = getChartBitmap();
+
+        try {
+            /*
+             * Write bitmap to file using JPEG or PNG and 40% quality hint for
+             * JPEG.
+             */
+            b.compress(CompressFormat.PNG, 40, stream);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+
+        return true;
+    }
 
     /**
      * Saves the current state of the chart to the gallery as an image type. The
